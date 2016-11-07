@@ -1,23 +1,23 @@
 const React               = require('react');
 const { connect }         = require('react-redux');
-const { projectSessions }    = require('../../../actions/action_creators');
+const { projectSessions }   = require('../../../actions/action_creators');
 
 
 const session = ({
     sessions,
-    params
+    params,
+    dispatch
 }) => {
-    console.log(params);
-    console.log('sessions', sessions);
+    console.log('params id', dispatch(projectSessions(params.Id)));
     return(
-        <div>This is the Sessions Page</div>
+        <div>{dispatch(projectSessions(params.Id))}</div>
     )
 }
 
-const mapStateToProps =(state, params) => {
-    console.log('sessions state', state)
+const mapStateToProps =(state) => {
+    console.log(state);
     return {
-        sessions: projectSessions(params)
+        sessions: state.sessions
     }
 }
 

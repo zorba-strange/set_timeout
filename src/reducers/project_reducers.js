@@ -32,16 +32,15 @@ const setTimeoutApp = (state=projectSeeds, action) => {
             return console.log('adding a project');
 
         case GET_PROJECT_SESSIONS:
-            console.log('get project sessions');
             return Object.assign({}, state, {
-                sessions: state.projects.map(project => {
+                projects: Immutable.fromJS(state).get('projects').map(project => {
+                    console.log('sessions firing', project.id, action.id);
                     if( project.id == action.id ){
                         console.log('reducer', project.sessions);
                         return Object.assign({}, project, {
                             sessions: project.sessions
                         })
                     }
-                    return sessions
                 })
             })
 
