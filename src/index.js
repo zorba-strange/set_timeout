@@ -18,7 +18,7 @@ render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App} />
-            <Route path="/:project" component={ProjectSessions} />
+            <Route path="/:Id" component={ProjectSessions} />
         </Router>
     </Provider>,
     document.getElementById('root')

@@ -1,5 +1,6 @@
 const {
-    ADD_PROJECT
+    ADD_PROJECT,
+    GET_PROJECT_SESSIONS
 }                                       = require('../actions/ACTION_TYPES');
 const Immutable                         = require('immutable');
 
@@ -11,7 +12,7 @@ const projectSeeds = Immutable.Map({
     projects: [
         {
            projectName: 'Seed Project',
-            id: uid(),
+            id: 1,
             sessions: [
                 {
                     sessionId: uid(),
@@ -26,8 +27,24 @@ const projectSeeds = Immutable.Map({
 const setTimeoutApp = (state=projectSeeds, action) => {
     console.log(state);
     switch( action.type ){
+
         case ADD_PROJECT:
             return console.log('adding a project');
+
+        case GET_PROJECT_SESSIONS:
+            console.log('get project sessions');
+            return Object.assign({}, state, {
+                sessions: state.projects.map(project => {
+                    if( project.id == action.id ){
+                        console.log('reducer', project.sessions);
+                        return Object.assign({}, project, {
+                            sessions: project.sessions
+                        })
+                    }
+                    return sessions
+                })
+            })
+
         default:
             return state;
     }

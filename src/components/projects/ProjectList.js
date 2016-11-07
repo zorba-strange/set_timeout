@@ -24,7 +24,6 @@ const projectList = ({projects}) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log('state projects', state.getIn(['projects']))
     return {
         projects: state.getIn(['projects'])
     }

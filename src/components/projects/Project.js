@@ -2,8 +2,7 @@ const React                 = require('react');
 const { Link }              = require('react-router');
 
 
-const Project = ({project, params}) => {
-    console.log('params', params);
+const Project = ({project}) => {
     return (
         <div>
             {project.projectName}
