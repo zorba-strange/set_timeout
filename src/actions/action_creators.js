@@ -21,6 +21,7 @@ export const setTime = (timeInput) => {
 }
 
 export const saveTime = (time) => {
+    console.log('action', time);
     return {
         type: SAVE_TIME,
         time

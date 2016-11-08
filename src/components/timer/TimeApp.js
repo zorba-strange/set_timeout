@@ -33,7 +33,7 @@ const timerApp = ({
     )
     } else {
         return (
-            <div>{time}</div>
+            <div>{timeInput}</div>
         )
     }
 }
