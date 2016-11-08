@@ -2,6 +2,7 @@ const {
     ADD_PROJECT,
     SET_TIME,
     TIMER_SET,
+    TIMER_RESET,
     COUNT_DOWN
 }                                 = require('./ACTION_TYPES');
 
@@ -17,6 +18,12 @@ export const setTime = (timeInput) => {
     return {
         type: SET_TIME,
         timeInput
+    }
+}
+
+export const timerReset = (timerSet) => {
+    return {
+        type: TIMER_RESET
     }
 }
 
@@ -37,12 +44,12 @@ export const countDown = (time) => {
 
 export const countDownAsync = (time) => {
     return(dispatch) => {
-        setTimeout(() => {
             while( parseInt(time) != 0 ){
-                time--;
-                dispatch(countDown(time));
+                    time--;
+                setTimeout(() => {
+                    dispatch(countDown(time));
+                }, 1000)
             }
-        }, 1000)
         return;
     }
 }

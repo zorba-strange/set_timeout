@@ -1,12 +1,14 @@
-const React               = require('react');
-const { connect }         = require('react-redux');
-const { bindActionCreators } = require('redux');
+const React                        = require('react');
+const { connect }                  = require('react-redux');
+const { bindActionCreators }       = require('redux');
 const {
     setTime,
     timeSet,
+    timerReset,
     countDownAsync
-}                         = require('../../actions/action_creators');
+}                                  = require('../../actions/action_creators');
 
+const AddSession                   = require('./CreateInput').default;
 
 const timerApp = ({
     timerSet,
@@ -31,6 +33,20 @@ const timerApp = ({
             value="Set Time" />
     </form>
     )
+    } else if ( parseInt(timeInput) === 0 ) {
+        return (
+            <div>
+                <AddSession />
+                <input 
+                    onClick={(e) => {
+                        e.preventDefalut;
+                        dispatch(timerReset(timerSet));
+                    }} 
+                    type="submit"
+                    value="Reset Timer"
+                />
+            </div>
+        )
     } else {
         return (
             <div>
@@ -45,14 +61,15 @@ const timerApp = ({
                         value="Start Timer"
                     />
                 </form>
-                    <input 
-                        onClick={(e) => {
-                            e.preventDefalut;
-                            dispatch(timeSet(!timerSet));
-                        }} 
-                        type="submit"
-                        value="Reset Timer"
-                    />
+                <input 
+                    onClick={(e) => {
+                        e.preventDefalut;
+                        // this should be a timerResetSet to set the timeInput back to ''
+                        dispatch(timeSet(!timerSet));
+                    }} 
+                    type="submit"
+                    value="Reset Timer"
+                />
             </div>
         )
     }
