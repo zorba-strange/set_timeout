@@ -6,7 +6,6 @@ const Project         = require('./Project').default;
 const projectList = ({projects, dispatch}) => {
     return(
         <div>{projects.map((project, index) => {
-            console.log('project', project.getIn(['id']));
             return(
                 <Link 
                     to={`${index}/${project.getIn(['id'])}`}

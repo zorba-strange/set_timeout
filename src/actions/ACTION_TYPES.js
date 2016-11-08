@@ -1,4 +1,5 @@
 // ACTION TYPES
 
 export const ADD_PROJECT              = 'ADD_PROJECT';
-export const GET_PROJECT_SESSIONS     = 'GET_PROJECT_SESSIONS';
+export const SET_TIME                 = 'SET_TIME';
+export const SAVE_TIME                = 'SAVE_TIME';

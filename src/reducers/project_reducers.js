@@ -1,6 +1,7 @@
 const {
     ADD_PROJECT,
-    GET_PROJECT_SESSIONS
+    SET_TIME,
+    SAVE_TIME
 }                                       = require('../actions/ACTION_TYPES');
 const Immutable                         = require('immutable');
 
@@ -12,8 +13,6 @@ const projectSeeds = Immutable.fromJS({
     projects: [
         {
             projectName: 'Seed Project',
-            // i wanted to use the uid() here but i found that if i make its id match is array index
-            // it is really easy to find when i want to pull just that project and its sessions
             id: uid(),
             sessions: [
                 {
@@ -39,15 +38,27 @@ const projectSeeds = Immutable.fromJS({
                 }
             ]
         }
-    ]
+    ],
+    timerSet: false,
+    time: 0,
+    timeInput: 0
 });
 
 const setTimeoutApp = (state=projectSeeds, action) => {
-    console.log(state);
     switch( action.type ){
 
-        case ADD_PROJECT:
-            return 
+        case SET_TIME:
+            console.log('setting time', action.timeInput);
+            return  state.set('timeInput', action.timeInput);
+
+        case SAVE_TIME:
+            console.log('saving');
+            return (
+                state.set('time', parseInt(action.time)),
+                console.log(action.time),
+                console.log(state.getIn(['time'])),
+                state.set('timerSet', !state.timerSet)
+            );
 
         default:
             return state;
