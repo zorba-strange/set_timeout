@@ -20,10 +20,11 @@ const session = ({project}) => {
     }
 
     const mapStateToProps =(state, ownProps) => {
+        console.log('session state', state.setIn(['projects'])['id'] );
     return {
-        // so this is mos def not how i want to do this but
-        // it was working and i didn't want to get stuck on this all day
-        project: state.getIn(['projects', ownProps.params.id])
+        // This is pulling the index of the project object that is
+        // passed in the route. Not sure if this is best practice or not.
+        project: state.getIn(['projects', ownProps.params.index])
     }
 }
 

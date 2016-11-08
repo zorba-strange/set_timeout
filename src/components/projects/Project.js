@@ -11,20 +11,5 @@ const Project = ({project, dispatch}) => {
     )
 }
 
-// const mapStateToProps = (state) => {
-//     console.log(state.sessions);
-//     return {
-//         sessions: state.sessions
-//     }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         projectSessions: (...args) => dispatch(projectSessions(...args))
-//     }
-// }
-
-// // const Project = connect(mapStateToProps, mapDispatchToProps)(projects)
-// const Project = connect(mapStateToProps)(projects)
 
 export default Project;

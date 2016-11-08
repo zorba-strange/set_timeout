@@ -14,18 +14,23 @@ const projectSeeds = Immutable.fromJS({
             projectName: 'Seed Project',
             // i wanted to use the uid() here but i found that if i make its id match is array index
             // it is really easy to find when i want to pull just that project and its sessions
-            id: 0,
+            id: uid(),
             sessions: [
                 {
                     sessionId: 1,
                     sessionInfo: "This some info about this session",
+                    sessionTime: 45
+                },
+                {
+                    sessionId: 5,
+                    sessionInfo: "Another session description",
                     sessionTime: 45
                 }
             ]
         },
         {
             projectName: 'Second Seed Data',
-            id: 1,
+            id: uid(),
             sessions: [
                 {
                     sessionId: 2,
@@ -42,7 +47,7 @@ const setTimeoutApp = (state=projectSeeds, action) => {
     switch( action.type ){
 
         case ADD_PROJECT:
-            return console.log('adding a project');
+            return 
 
         default:
             return state;

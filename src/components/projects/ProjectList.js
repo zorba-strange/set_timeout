@@ -5,11 +5,11 @@ const Project         = require('./Project').default;
 
 const projectList = ({projects, dispatch}) => {
     return(
-        <div>{projects.map(project => {
+        <div>{projects.map((project, index) => {
             console.log('project', project.getIn(['id']));
             return(
                 <Link 
-                    to={`${project.getIn(['id'])}`}
+                    to={`${index}/${project.getIn(['id'])}`}
                     key={project.getIn(['id'])}
                 >
                     <Project 
