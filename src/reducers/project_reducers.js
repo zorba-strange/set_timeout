@@ -1,7 +1,8 @@
 const {
     ADD_PROJECT,
     SET_TIME,
-    TIMER_SET 
+    TIMER_SET, 
+    COUNT_DOWN
 }                                       = require('../actions/ACTION_TYPES');
 const Immutable                         = require('immutable');
 
@@ -51,6 +52,9 @@ const setTimeoutApp = (state=projectSeeds, action) => {
 
         case TIMER_SET:
             return state.set('timerSet', action.timerSet)
+
+        case COUNT_DOWN:
+            return state.set('timeInput', action.time)
 
         default:
             return state;

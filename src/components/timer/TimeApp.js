@@ -3,7 +3,8 @@ const { connect }         = require('react-redux');
 const { bindActionCreators } = require('redux');
 const {
     setTime,
-    timeSet
+    timeSet,
+    countDownAsync
 }                         = require('../../actions/action_creators');
 
 
@@ -37,7 +38,7 @@ const timerApp = ({
                 <form 
                     onSubmit={(e) => { 
                         e.preventDefault();
-                        console.log('submitting');
+                        dispatch(countDownAsync(timeInput));
                     }}>
                     <input 
                         type="submit"
