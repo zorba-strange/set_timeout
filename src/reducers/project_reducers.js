@@ -47,6 +47,13 @@ const setTimeoutApp = (state=projectSeeds, action) => {
     switch( action.type ){
 
         case ADD_PROJECT:
+            /* 
+                be careful, you are setting state to undefined here 
+                you probably want to return the state like you do 
+                in the default state
+
+                return state; 
+            */
             return 
 
         default:

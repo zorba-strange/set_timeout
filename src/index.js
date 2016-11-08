@@ -15,10 +15,16 @@ const store = createStore(setTimeoutApp);
 console.log('running');
 
 render(
-    <Provider store={store}>
-        <Router history={browserHistory}>
-            <Route path="/" component={App} />
-            <Route path="/:index/:id" component={ProjectSessions} />
+    <Provider 
+        store={store}>
+        <Router 
+            history={browserHistory}>
+            <Route 
+                path="/" 
+                component={App} />
+            <Route 
+                path="/:index/:id" 
+                component={ProjectSessions} />
         </Router>
     </Provider>,
     document.getElementById('root')
