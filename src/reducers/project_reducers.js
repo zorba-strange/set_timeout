@@ -1,7 +1,7 @@
 const {
     ADD_PROJECT,
     SET_TIME,
-    SAVE_TIME
+    TIMER_SET 
 }                                       = require('../actions/ACTION_TYPES');
 const Immutable                         = require('immutable');
 
@@ -40,25 +40,17 @@ const projectSeeds = Immutable.fromJS({
         }
     ],
     timerSet: false,
-    time: 0,
-    timeInput: 0
+    timeInput: ''
 });
 
 const setTimeoutApp = (state=projectSeeds, action) => {
     switch( action.type ){
 
         case SET_TIME:
-            console.log('setting time', action.timeInput);
             return  state.set('timeInput', action.timeInput);
 
-        case SAVE_TIME:
-            console.log('saving');
-            return (
-                state.set('time', parseInt(action.time)),
-                console.log(action.time),
-                console.log(state.getIn(['time'])),
-                state.set('timerSet', !state.timerSet)
-            );
+        case TIMER_SET:
+            return state.set('timerSet', action.timerSet)
 
         default:
             return state;

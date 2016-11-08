@@ -3,12 +3,11 @@ const { connect }         = require('react-redux');
 const { bindActionCreators } = require('redux');
 const {
     setTime,
-    saveTime
+    timeSet
 }                         = require('../../actions/action_creators');
 
 
 const timerApp = ({
-    time,
     timerSet,
     dispatch,
     timeInput
@@ -17,7 +16,7 @@ const timerApp = ({
     return (
         <form onSubmit={(e) => {
             e.preventDefault();
-            dispatch(saveTime(timeInput));
+            dispatch(timeSet(!timerSet));
             setTime({timeInput});
         }}>
 
@@ -25,7 +24,7 @@ const timerApp = ({
             type="text"
             onChange={(e) =>  dispatch(setTime(e.target.value))}
             value={timeInput}
-            placeholder={time} />
+            placeholder='0:00' />
         <input 
             type="submit"
             value="Set Time" />
@@ -33,16 +32,34 @@ const timerApp = ({
     )
     } else {
         return (
-            <div>{timeInput}</div>
+            <div>
+                {timeInput}
+                <form 
+                    onSubmit={(e) => { 
+                        e.preventDefault();
+                        console.log('submitting');
+                    }}>
+                    <input 
+                        type="submit"
+                        value="Start Timer"
+                    />
+                </form>
+                    <input 
+                        onClick={(e) => {
+                            e.preventDefalut;
+                            dispatch(timeSet(!timerSet));
+                        }} 
+                        type="submit"
+                        value="Reset Timer"
+                    />
+            </div>
         )
     }
 }
 
 
 const mapStateToProps = (state) => {
-    console.log(state.getIn(['time']))
     return {
-        time: state.getIn(['time']),
         timeInput: state.getIn(['timeInput']),
         timerSet: state.getIn(['timerSet'])
     }

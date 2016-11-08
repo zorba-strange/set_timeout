@@ -1,7 +1,7 @@
 const { 
     ADD_PROJECT,
     SET_TIME,
-    SAVE_TIME
+    TIMER_SET
 }                                 = require('./ACTION_TYPES');
 
 
@@ -13,17 +13,15 @@ export const addProject = (projectName) => {
 }
 
 export const setTime = (timeInput) => {
-    console.log(timeInput);
     return {
         type: SET_TIME,
         timeInput
     }
 }
 
-export const saveTime = (time) => {
-    console.log('action', time);
+export const timeSet = (timerSet) => {
     return {
-        type: SAVE_TIME,
-        time
+        type: TIMER_SET,
+        timerSet
     }
 }
