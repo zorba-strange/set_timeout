@@ -11,7 +11,7 @@ const uid = () => Math.random().toString(34).slice(2);
 const projectSeeds = Immutable.Map({
     projects: [
         {
-           projectName: 'Seed Project',
+            projectName: 'Seed Project',
             id: 1,
             sessions: [
                 {
@@ -20,18 +20,18 @@ const projectSeeds = Immutable.Map({
                     sessionTime: 45
                 }
             ]
+        },
+        {
+            projectName: 'Second Seed Data',
+            id: 2,
+            sessions: [
+                {
+                    sessionId: 2,
+                    sessionInfo: "Here is another piece of data",
+                    sessionTime: 45
+                }
+            ]
         }
-        // {
-        //    projectName: 'Second Seed Data',
-        //     id: 2,
-        //     sessions: [
-        //         {
-        //             sessionId: 2,
-        //             sessionInfo: "Here is another piece of data",
-        //             sessionTime: 45
-        //         }
-        //     ]
-        // }
     ]
 });
 

@@ -21,7 +21,9 @@ const mapStateToProps =(state, ownProps) => {
             return project.sessions;
         } else {
             console.log('not found');
-        }})
+        }
+        return project.sessions
+    })
     }
 }
 
