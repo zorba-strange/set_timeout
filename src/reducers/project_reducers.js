@@ -8,11 +8,13 @@ const Immutable                         = require('immutable');
 const uid = () => Math.random().toString(34).slice(2);
 
 
-const projectSeeds = Immutable.Map({
+const projectSeeds = Immutable.fromJS({
     projects: [
         {
             projectName: 'Seed Project',
-            id: 1,
+            // i wanted to use the uid() here but i found that if i make its id match is array index
+            // it is really easy to find when i want to pull just that project and its sessions
+            id: 0,
             sessions: [
                 {
                     sessionId: 1,
@@ -23,7 +25,7 @@ const projectSeeds = Immutable.Map({
         },
         {
             projectName: 'Second Seed Data',
-            id: 2,
+            id: 1,
             sessions: [
                 {
                     sessionId: 2,
@@ -41,19 +43,6 @@ const setTimeoutApp = (state=projectSeeds, action) => {
 
         case ADD_PROJECT:
             return console.log('adding a project');
-
-        case GET_PROJECT_SESSIONS:
-            return Object.assign({}, state, {
-                projects: Immutable.fromJS(state).get('projects').map(project => {
-                    console.log('sessions firing', project.id, action.id);
-                    if( project.id == action.id ){
-                        console.log('reducer', project.sessions);
-                        return Object.assign({}, project, {
-                            sessions: project.sessions
-                        })
-                    }
-                })
-            })
 
         default:
             return state;

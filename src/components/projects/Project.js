@@ -3,9 +3,10 @@ const { Link }              = require('react-router');
 const { connect }           = require('react-redux');
 
 const Project = ({project, dispatch}) => {
+    console.log('project', project)
     return (
         <div>
-            {project.projectName}
+            {project}
         </div>
     )
 }
