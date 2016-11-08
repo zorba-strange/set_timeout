@@ -15,12 +15,23 @@ const projectSeeds = Immutable.Map({
             id: 1,
             sessions: [
                 {
-                    sessionId: uid(),
+                    sessionId: 1,
                     sessionInfo: "This some info about this session",
                     sessionTime: 45
                 }
             ]
         }
+        // {
+        //    projectName: 'Second Seed Data',
+        //     id: 2,
+        //     sessions: [
+        //         {
+        //             sessionId: 2,
+        //             sessionInfo: "Here is another piece of data",
+        //             sessionTime: 45
+        //         }
+        //     ]
+        // }
     ]
 });
 

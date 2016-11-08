@@ -3,21 +3,25 @@ const { connect }         = require('react-redux');
 const { projectSessions }   = require('../../../actions/action_creators');
 
 
-const session = ({
-    sessions,
-    params,
-    dispatch
-}) => {
-    console.log('params id', dispatch(projectSessions(params.Id)));
+const session = ({sessions}) => {
+    console.log(sessions.map(session => session.map(s => console.log(s.sessionInfo))));
     return(
-        <div>{dispatch(projectSessions(params.Id))}</div>
+        <div>{sessions.map(session => session.map(s => {
+            return (
+                <div key={s.sessionId}>{s.sessionInfo}</div>)}))}
+        </div>
     )
 }
 
-const mapStateToProps =(state) => {
-    console.log(state);
+const mapStateToProps =(state, ownProps) => {
     return {
-        sessions: state.sessions
+    sessions: state.getIn(['projects']).map((project) => { 
+        console.log(project.id, ownProps.params.id);
+        if(project.id === parseInt(ownProps.params.id)){
+            return project.sessions;
+        } else {
+            console.log('not found');
+        }})
     }
 }
 
