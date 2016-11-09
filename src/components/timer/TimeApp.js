@@ -8,7 +8,7 @@ const {
     countDownAsync
 }                                  = require('../../actions/action_creators');
 
-const AddSession                   = require('./CreateInput').default;
+const AddSession                   = require('./AddSession').default;
 
 const timerApp = ({
     timerSet,

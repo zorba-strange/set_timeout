@@ -5,7 +5,7 @@ const {
     TIMER_RESET,
     COUNT_DOWN,
     ADD_SESSION,
-    INPUT_PROJECT_NAME
+    INPUT_PROJECT_NAME,
 }                                 = require('./ACTION_TYPES');
 
 
@@ -23,12 +23,19 @@ export const inputProjectName = (projectName) => {
     }
 }
 
-export const addSession = (projectId, time, sessionInfo) => {
+export const addSessionInfo = (projectName, time, sessionInfo) => {
     return {
         type: ADD_SESSION,
-        projectId,
+        projectName,
         time,
         sessionInfo
+    }
+}
+
+export const newSessionInfo = (inputSessionInfo) => {
+    return {
+        type: NEW_SESSION_INFO,
+        inputSessionInfo
     }
 }
 

@@ -7,3 +7,4 @@ export const TIMER_RESET              = 'TIMER_RESET';
 export const COUNT_DOWN               = 'COUNT_DOWN';
 export const ADD_SESSION              = 'ADD_SESSION';
 export const INPUT_PROJECT_NAME       = 'INPUT_PROJECT_NAME';
+export const NEW_SESSION_INFO         = 'NEW_SESSION_INFO';

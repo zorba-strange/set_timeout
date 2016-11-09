@@ -4,7 +4,9 @@ const {
     TIMER_SET, 
     COUNT_DOWN,
     TIMER_RESET,
-    INPUT_PROJECT_NAME
+    INPUT_PROJECT_NAME,
+    ADD_SESSION,
+    NEW_SESSION_INFO
 
 }                                       = require('../actions/ACTION_TYPES');
 const Immutable                         = require('immutable');
@@ -45,7 +47,8 @@ const projectSeeds = Immutable.fromJS({
     ],
     timerSet: false,
     timeInput: '',
-    newProject: ''
+    newProject: '',
+    inputSessionInfo: ''
 });
 
 const setTimeoutApp = (state=projectSeeds, action) => {
@@ -61,10 +64,15 @@ const setTimeoutApp = (state=projectSeeds, action) => {
                         projectName: action.projectName,
                         id: uid(),
                         sessions: []
-
                     }))
                 )
             })
+
+        case NEW_SESSION_INFO:
+            return state.set('inputSessionInfo', action.inputSessionInfo)
+
+        case ADD_SESSION:
+            return console.log('session reducer')
 
         case SET_TIME:
             return  state.set('timeInput', action.timeInput);
