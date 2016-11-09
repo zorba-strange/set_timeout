@@ -4,6 +4,7 @@ const { Link }        = require('react-router');
 const Project         = require('./Project').default;
 
 const projectList = ({projects, dispatch}) => {
+    console.log(projects);
     return(
         <div>
             {projects.map((project, index) => {

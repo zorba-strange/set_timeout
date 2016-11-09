@@ -3,7 +3,9 @@ const {
     SET_TIME,
     TIMER_SET, 
     COUNT_DOWN,
-    TIMER_RESET
+    TIMER_RESET,
+    INPUT_PROJECT_NAME
+
 }                                       = require('../actions/ACTION_TYPES');
 const Immutable                         = require('immutable');
 
@@ -42,11 +44,27 @@ const projectSeeds = Immutable.fromJS({
         }
     ],
     timerSet: false,
-    timeInput: ''
+    timeInput: '',
+    newProject: ''
 });
 
 const setTimeoutApp = (state=projectSeeds, action) => {
     switch( action.type ){
+
+        case INPUT_PROJECT_NAME:
+            return state.set('newProject', action.projectName)
+
+        case ADD_PROJECT:
+            return state.updateIn(['projects'], 'not-set-value', (projects) => {
+                return (
+                    projects.push(Immutable.fromJS({
+                        projectName: action.projectName,
+                        id: uid(),
+                        sessions: []
+
+                    }))
+                )
+            })
 
         case SET_TIME:
             return  state.set('timeInput', action.timeInput);
@@ -55,10 +73,7 @@ const setTimeoutApp = (state=projectSeeds, action) => {
             return state.set('timerSet', action.timerSet)
 
         case TIMER_RESET:
-            return ([
-                state.set('timeInput', ''),
-                state.set('timerSet', !action.timerSet)
-            ])
+            return  state.set('timerSet', !action.timerSet)
 
         case COUNT_DOWN:
             return state.set('timeInput', action.time)

@@ -3,7 +3,9 @@ const {
     SET_TIME,
     TIMER_SET,
     TIMER_RESET,
-    COUNT_DOWN
+    COUNT_DOWN,
+    ADD_SESSION,
+    INPUT_PROJECT_NAME
 }                                 = require('./ACTION_TYPES');
 
 
@@ -11,6 +13,22 @@ export const addProject = (projectName) => {
     return {
         type: ADD_PROJECT,
         projectName
+    }
+}
+
+export const inputProjectName = (projectName) => {
+    return {
+        type: INPUT_PROJECT_NAME,
+        projectName
+    }
+}
+
+export const addSession = (projectId, time, sessionInfo) => {
+    return {
+        type: ADD_SESSION,
+        projectId,
+        time,
+        sessionInfo
     }
 }
 
@@ -23,7 +41,8 @@ export const setTime = (timeInput) => {
 
 export const timerReset = (timerSet) => {
     return {
-        type: TIMER_RESET
+        type: TIMER_RESET,
+        timerSet
     }
 }
 
@@ -44,12 +63,12 @@ export const countDown = (time) => {
 
 export const countDownAsync = (time) => {
     return(dispatch) => {
+        setTimeout(() => {
             while( parseInt(time) != 0 ){
-                    time--;
-                setTimeout(() => {
-                    dispatch(countDown(time));
-                }, 1000)
+                time--;
+                dispatch(countDown(time));
             }
-        return;
+            return;
+        }, 1000); 
     }
 }
