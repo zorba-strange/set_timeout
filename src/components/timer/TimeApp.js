@@ -83,14 +83,15 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        allActionCreators: bindActionCreators({
-            setTime,
-            saveTime
-        }, dispatch)
-    }
-}
+// Not sue why but i still can't figure out how mapDispatchToProps works
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         allActionCreators: bindActionCreators({
+//             setTime,
+//             saveTime
+//         }, dispatch)
+//     }
+// }
 
 
 const TimerApp = connect(mapStateToProps)(timerApp);

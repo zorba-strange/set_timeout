@@ -6,7 +6,8 @@ const {
     TIMER_RESET,
     INPUT_PROJECT_NAME,
     ADD_SESSION,
-    NEW_SESSION_INFO
+    NEW_SESSION_INFO,
+    OPTION_PROJECT_NAME
 
 }                                       = require('../actions/ACTION_TYPES');
 const Immutable                         = require('immutable');
@@ -48,7 +49,8 @@ const projectSeeds = Immutable.fromJS({
     timerSet: false,
     timeInput: '',
     newProject: '',
-    inputSessionInfo: ''
+    inputSessionInfo: '',
+    optionProjectName: ''
 });
 
 const setTimeoutApp = (state=projectSeeds, action) => {
@@ -56,6 +58,10 @@ const setTimeoutApp = (state=projectSeeds, action) => {
 
         case INPUT_PROJECT_NAME:
             return state.set('newProject', action.projectName)
+
+        case OPTION_PROJECT_NAME:
+            console.log(action.projectName)
+            return state.set('optionProjectName', action.projectName)
 
         case ADD_PROJECT:
             return state.updateIn(['projects'], 'not-set-value', (projects) => {
@@ -69,10 +75,23 @@ const setTimeoutApp = (state=projectSeeds, action) => {
             })
 
         case NEW_SESSION_INFO:
+            console.log(action.inputSessionInfo);
             return state.set('inputSessionInfo', action.inputSessionInfo)
 
         case ADD_SESSION:
-            return console.log('session reducer')
+            return state.updateIn(['projects'], 'not-set-value', (projects) => {
+                if( projects.getIn(['projectName']) === action.projectName ){
+                    return projects.updateIn(['sessions'], 'not-set-value', (sessions) => {
+                        return (
+                            sessions.push(Immutable.fromJS({
+                                sessionId: uid(),
+                                sessionInfo: action.sessionInfo,
+                                sessionTime: action.sessionTime
+                            }))
+                        )
+                    })
+                }
+            })
 
         case SET_TIME:
             return  state.set('timeInput', action.timeInput);

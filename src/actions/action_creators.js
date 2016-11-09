@@ -6,8 +6,17 @@ const {
     COUNT_DOWN,
     ADD_SESSION,
     INPUT_PROJECT_NAME,
+    NEW_SESSION_INFO,
+    OPTION_PROJECT_NAME
+
 }                                 = require('./ACTION_TYPES');
 
+export const selectProjectName = (projectName) => {
+    return {
+        type: OPTION_PROJECT_NAME,
+        projectName
+    }
+}
 
 export const addProject = (projectName) => {
     return {
@@ -33,6 +42,7 @@ export const addSessionInfo = (projectName, time, sessionInfo) => {
 }
 
 export const newSessionInfo = (inputSessionInfo) => {
+    console.log(inputSessionInfo);
     return {
         type: NEW_SESSION_INFO,
         inputSessionInfo
