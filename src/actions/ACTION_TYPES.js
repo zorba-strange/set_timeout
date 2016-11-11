@@ -8,4 +8,4 @@ export const COUNT_DOWN               = 'COUNT_DOWN';
 export const ADD_SESSION              = 'ADD_SESSION';
 export const INPUT_PROJECT_NAME       = 'INPUT_PROJECT_NAME';
 export const NEW_SESSION_INFO         = 'NEW_SESSION_INFO';
-export const OPTION_PROJECT_NAME      = 'NEW_SESSION_INFO';
+export const OPTION_PROJECT_NAME      = 'OPTION_PROJECT_NAME';

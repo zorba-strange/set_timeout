@@ -60,7 +60,6 @@ const setTimeoutApp = (state=projectSeeds, action) => {
             return state.set('newProject', action.projectName)
 
         case OPTION_PROJECT_NAME:
-            console.log(action.projectName)
             return state.set('optionProjectName', action.projectName)
 
         case ADD_PROJECT:
@@ -75,21 +74,18 @@ const setTimeoutApp = (state=projectSeeds, action) => {
             })
 
         case NEW_SESSION_INFO:
-            console.log(action.inputSessionInfo);
             return state.set('inputSessionInfo', action.inputSessionInfo)
 
         case ADD_SESSION:
+            console.log('reducer add_session', action.projectName)
             return state.updateIn(['projects'], 'not-set-value', (projects) => {
-                if( projects.getIn(['projectName']) === action.projectName ){
-                    return projects.updateIn(['sessions'], 'not-set-value', (sessions) => {
-                        return (
-                            sessions.push(Immutable.fromJS({
-                                sessionId: uid(),
-                                sessionInfo: action.sessionInfo,
-                                sessionTime: action.sessionTime
-                            }))
-                        )
-                    })
+                if(projects.getIn(['projectName']) === action.projectName){
+                    console.log('project found');
+                    sessions.push(Immutable.fromJS({
+                        sessionId: uid(),
+                        sessionInfo: action.sessionInfo,
+                        sessionTime: action.sessionTime
+                    }))
                 }
             })
 
@@ -103,7 +99,8 @@ const setTimeoutApp = (state=projectSeeds, action) => {
             return  state.set('timerSet', !action.timerSet)
 
         case COUNT_DOWN:
-            return state.set('timeInput', action.time)
+                console.log(state.getIn(['timeInput']))
+                return state.set('timeInput', action.time)
 
         default:
             return state;

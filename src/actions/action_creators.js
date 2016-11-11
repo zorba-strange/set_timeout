@@ -33,6 +33,7 @@ export const inputProjectName = (projectName) => {
 }
 
 export const addSessionInfo = (projectName, time, sessionInfo) => {
+    console.log('action', projectName, time, sessionInfo)
     return {
         type: ADD_SESSION,
         projectName,
@@ -42,7 +43,6 @@ export const addSessionInfo = (projectName, time, sessionInfo) => {
 }
 
 export const newSessionInfo = (inputSessionInfo) => {
-    console.log(inputSessionInfo);
     return {
         type: NEW_SESSION_INFO,
         inputSessionInfo
@@ -71,7 +71,7 @@ export const timeSet = (timerSet) => {
 }
 
 export const countDown = (time) => {
-    console.log('action', time);
+    console.log('countDown', time)
     return {
         type: COUNT_DOWN,
         time
@@ -80,12 +80,9 @@ export const countDown = (time) => {
 
 export const countDownAsync = (time) => {
     return(dispatch) => {
-        setTimeout(() => {
-            while( parseInt(time) != 0 ){
-                time--;
-                dispatch(countDown(time));
-            }
-            return;
-        }, 1000); 
+        while(parseInt(time) != 0){
+            time--;
+            dispatch(countDown(time))
+        }
     }
 }

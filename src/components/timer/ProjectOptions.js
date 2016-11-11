@@ -23,7 +23,8 @@ const projectOptions = ({
                 <option 
                     value=""
                     disabled
-                >Projects
+                    selected
+                >Please select a project
                 </option>
                 {
                     projects.map(project => {

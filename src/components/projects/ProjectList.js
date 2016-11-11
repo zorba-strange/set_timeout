@@ -4,7 +4,7 @@ const { Link }        = require('react-router');
 const Project         = require('./Project').default;
 
 const projectList = ({projects, dispatch}) => {
-    console.log(projects);
+    console.log('projects listed', projects);
     return(
         <div>
             {projects.map((project, index) => {
@@ -24,6 +24,7 @@ const projectList = ({projects, dispatch}) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log('project list state:', state)
     return {
         projects: state.getIn(['projects'])
     }
