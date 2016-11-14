@@ -14,7 +14,6 @@ export const projectReducers = (state=Immutable.fromJS({
         case INPUT_PROJECT_NAME:
             return state.set('newProject', action.projectName)
 
-
         case ADD_PROJECT:
             return state.updateIn(['projects'], 'not-set-value', (projects) => {
                 return (

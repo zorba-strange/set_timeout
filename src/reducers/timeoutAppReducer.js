@@ -4,6 +4,10 @@ const { projectReducers }                   = require('./projectReducers');
 const { sessionReducer }                    = require('./sessionReducers');
 
 
-const TimeoutApp = combineReducers({projectReducers, timerReducer, sessionReducer});
+const TimeoutApp = combineReducers({
+    projectReducers,
+    timerReducer,
+    sessionReducer
+});
 
 export default TimeoutApp;
