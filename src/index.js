@@ -16,7 +16,10 @@ const App                 = require('./components/App').default;
 const ProjectSessions     = require('./components/projects/sessions/ProjectSessions').default;
 
 
-const store = createStore(TimeoutApp);
+const store = createStore(
+    TimeoutApp,
+    applyMiddleware(thunk)
+);
 
 console.log('running');
 

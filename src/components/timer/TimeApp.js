@@ -5,8 +5,9 @@ const {
     setTime,
     timeSet,
     timerReset,
-    countDownAsync
+    countDownAsync 
 }                                  = require('../../actions/action_creators');
+
 
 const AddSession                   = require('./AddSession').default;
 
@@ -16,23 +17,23 @@ const timerApp = ({
     timeInput
 }) => {
     if( !timerSet ){
-    return (
-        <form onSubmit={(e) => {
-            e.preventDefault();
-            dispatch(timeSet(!timerSet));
-            setTime({timeInput});
-        }}>
+        return (
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                dispatch(timeSet(!timerSet));
+                setTime({timeInput});
+            }}>
 
-        <input 
-            type="text"
-            onChange={(e) =>  dispatch(setTime(e.target.value))}
-            value={timeInput}
-            placeholder='0:00' />
-        <input 
-            type="submit"
-            value="Set Time" />
-    </form>
-    )
+            <input 
+                type="text"
+                onChange={(e) =>  dispatch(setTime(e.target.value))}
+                value={timeInput}
+                placeholder='0:00' />
+            <input 
+                type="submit"
+                value="Set Time" />
+        </form>
+        )
     } else if ( parseInt(timeInput) === 0 ) {
         return (
             <div>
@@ -54,7 +55,10 @@ const timerApp = ({
                 <form 
                     onSubmit={(e) => { 
                         e.preventDefault();
-                        dispatch(countDownAsync(timeInput));
+                        while(parseInt(timeInput) != 0) {
+                            timeInput = parseInt(timeInput) - 1;
+                            dispatch(countDownAsync(timeInput))
+                        }
                     }}>
                     <input 
                         type="submit"
@@ -72,11 +76,12 @@ const timerApp = ({
                 />
             </div>
         )
-}
+    }
 }
 
 
 const mapStateToProps = (state) => {
+    console.log(state.timerReducer.getIn(['timeInput']))
     return {
         timeInput: state.timerReducer.getIn(['timeInput']),
         timerSet: state.timerReducer.getIn(['timerSet'])

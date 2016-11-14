@@ -69,7 +69,7 @@ export const timeSet = (timerSet) => {
     }
 }
 
-export const countDown = (time) => {
+export const countDownAsync = (time) => {
     console.log('countDown', time)
     return {
         type: COUNT_DOWN,
@@ -77,11 +77,19 @@ export const countDown = (time) => {
     }
 }
 
-export const countDownAsync = (time) => {
-    return(dispatch) => {
-        while(parseInt(time) != 0 ){
-            time--;
-            setInterval(() => dispatch(countDown(time)), 1000)
-        }
-    }
-}
+//     return(dispatch) => {
+//         while(parseInt(time) > 0 ){
+//             time--;
+//             setTimeout(() => dispatch(countDown(time)), 1000)
+//         }
+//     }
+// }
+
+// export const countDownAsync = (time) => {
+//     return(dispatch) => {
+//         while(parseInt(time) != 0 ){
+//             time--;
+//             setInterval(() => dispatch(countDown(time)), 1000)
+//         }
+//     }
+// }
