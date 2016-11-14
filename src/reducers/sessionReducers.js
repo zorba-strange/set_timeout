@@ -29,27 +29,3 @@ export const sessionReducer = (state=Immutable.fromJS({
             return state
     }
 }
-// export const sessionReducer = (state=Immutable.fromJS({
-//     sessions: [],
-// }), action) => {
-//     switch( action.type ){
-//         case NEW_SESSION_INFO:
-//             console.log('new session info called')
-//             return state.set('inputSessionInfo', action.inputSessionInfo)
-
-//         case ADD_SESSION:
-//             console.log('add session called');
-//             return state.updateIn(['sessions'], 'not-set-value', (sessions) => {
-//                 return (
-//                     sessions.push(Immutable.fromJS({
-//                         projectName: action.optionProjectName,
-//                         sessionInfo: action.inputSessionInfo,
-//                         time: action.timeInput
-//                     }))
-//                 )
-//             })
-
-//         default:
-//             return state
-//     }
-// }
