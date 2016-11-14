@@ -3,26 +3,35 @@ const { connect }         = require('react-redux');
 const { projectSessions }   = require('../../../actions/action_creators');
 
 
-const session = ({projectName, projectId, sessionProjectName}) => {
+const session = ({
+    projectName,
+    sessions
+}) => {
     return(
         <div>
             <h1>
                 {projectName}
             </h1>
             <div>
+                {sessions.map(session => {
+                    if( session.getIn(['projectName']) === projectName ){
+                    return (
+                        <div>
+                            {session.getIn(['sessionInfo'])}
+                        </div>
+                    )
+                    }
+                })}
             </div>
         </div>
     )
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log('session state', state)
+    console.log(state.sessionReducer.getIn(['sessions']))
     return {
-        // This is pulling the index of the project object that is
-        // passed in the route. Not sure if this is best practice or not.
-        projectId: ownProps.params.id,
         projectName: ownProps.params.projectName,
-        sessionProjectName: state.sessionReducer.getIn(['projectName'])
+        sessions: state.sessionReducer.getIn(['sessions'])
     }
 }
 
