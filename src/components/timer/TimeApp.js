@@ -78,8 +78,8 @@ const timerApp = ({
 
 const mapStateToProps = (state) => {
     return {
-        timeInput: state.getIn(['timeInput']),
-        timerSet: state.getIn(['timerSet'])
+        timeInput: state.timerReducer.getIn(['timeInput']),
+        timerSet: state.timerReducer.getIn(['timerSet'])
     }
 }
 

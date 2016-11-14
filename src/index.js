@@ -11,14 +11,12 @@ const {
     browserHistory 
 }                         = require('react-router');
 const { Provider }        = require('react-redux');
-const setTimeoutApp       = require('./reducers/project_reducers.js').default;
+const TimeoutApp       = require('./reducers/timeoutAppReducer').default;
 const App                 = require('./components/App').default;
 const ProjectSessions     = require('./components/projects/sessions/ProjectSessions').default;
 
-const store = createStore(
-    setTimeoutApp,
-    applyMiddleware(thunk)
-);
+
+const store = createStore(TimeoutApp);
 
 console.log('running');
 
@@ -26,7 +24,7 @@ render(
     <Provider store={store}>
         <Router history={browserHistory}>
             <Route path="/" component={App} />
-            <Route path="/:index/:id" component={ProjectSessions} />
+            <Route path="/:projectName/:id" component={ProjectSessions} />
         </Router>
     </Provider>,
     document.getElementById('root')

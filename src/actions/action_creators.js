@@ -32,13 +32,12 @@ export const inputProjectName = (projectName) => {
     }
 }
 
-export const addSessionInfo = (projectName, time, sessionInfo) => {
-    console.log('action', projectName, time, sessionInfo)
+export const addSessionInfo = (inputSessionInfo, optionProjectName) => {
+    console.log('action OPN', optionProjectName);
     return {
         type: ADD_SESSION,
-        projectName,
-        time,
-        sessionInfo
+        inputSessionInfo,
+        optionProjectName,
     }
 }
 
@@ -80,9 +79,9 @@ export const countDown = (time) => {
 
 export const countDownAsync = (time) => {
     return(dispatch) => {
-        while(parseInt(time) != 0){
+        while(parseInt(time) != 0 ){
             time--;
-            dispatch(countDown(time))
+            setInterval(() => dispatch(countDown(time)), 1000)
         }
     }
 }

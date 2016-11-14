@@ -12,7 +12,6 @@ const projectOptions = ({
     optionProjectName,
     timeInput
 }) => {
-    console.log(inputSessionInfo);
     return (
         <div>
             <select
@@ -42,15 +41,13 @@ const projectOptions = ({
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
-                    dispatch(addSessionInfo(optionProjectName, timeInput, inputSessionInfo));
+                    dispatch(addSessionInfo(inputSessionInfo, optionProjectName));
                     newSessionInfo({inputSessionInfo})
-                    console.log('submited and new session');
                 }}
             >
                 <input
                     type="text"
                     onChange={(e) => {
-                        console.log(e.target.value)
                         dispatch(newSessionInfo(e.target.value))
                     }}
                     value={inputSessionInfo}
@@ -67,10 +64,10 @@ const projectOptions = ({
 
 const mapStateToProps = (state) => {
     return {
-        timeInput: state.getIn(['timeInput']),
-        projects: state.getIn(['projects']),
-        inputSessionInfo: state.getIn(['inputSessionInfo']),
-        optionProjectName: state.getIn(['optionProjectName'])
+        timeInput: state.timerReducer.getIn(['timeInput']),
+        projects: state.projectReducers.getIn(['projects']),
+        optionProjectName: state.sessionReducer.getIn(['optionProjectName']),
+        inputSessionInfo: state.sessionReducer.getIn(['inputSessionInfo'])
     }
 }
 

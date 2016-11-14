@@ -6,6 +6,7 @@ const {
 }                         = require('../../actions/action_creators');
 
 
+const Immutable           = require('immutable');
 const addNewProject = ({
     newProject,
     dispatch
@@ -14,7 +15,6 @@ const addNewProject = ({
         <form 
             onSubmit={(e) => {
                 e.preventDefault();
-                console.log(newProject);
                 dispatch(addProject(newProject));
             }}
         >
@@ -37,7 +37,7 @@ const addNewProject = ({
 
 const mapStateToProps = (state) => {
     return {
-        newProject: state.getIn(['newProject'])
+        newProject: state.projectReducers.getIn(['newProject'], '')
     }
 }
 

@@ -10,7 +10,7 @@ const projectList = ({projects, dispatch}) => {
             {projects.map((project, index) => {
             return(
                 <Link 
-                    to={`${index}/${project.getIn(['id'])}`}
+                    to={`${project.getIn(['projectName'])}/${project.getIn(['id'])}`}
                     key={project.getIn(['id'])}
                 >
                     <Project 
@@ -24,9 +24,8 @@ const projectList = ({projects, dispatch}) => {
 }
 
 const mapStateToProps = (state) => {
-    console.log('project list state:', state)
     return {
-        projects: state.getIn(['projects'])
+        projects: state.projectReducers.getIn(['projects'])
     }
 }
 

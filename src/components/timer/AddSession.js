@@ -20,8 +20,7 @@ const addSession = ({
 
 const mapStateToProps = (state) => {
     return {
-        projects: state.getIn(['projects']),
-        inputSessionInfo: state.getIn(['inputSessionInfo'])
+        projects: state.projectReducers.getIn(['projects']),
     }
 }
 
