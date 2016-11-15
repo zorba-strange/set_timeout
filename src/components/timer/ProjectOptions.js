@@ -4,14 +4,17 @@ const {
     addSessionInfo,
     newSessionInfo,
     selectProjectName,
-    resetSessionInfo
+    resetSessionInfo,
+    setInputTime,
+    timeSet,
 }                       = require('../../actions/action_creators');
 const projectOptions = ({
     projects,
     inputSessionInfo,
     dispatch,
     optionProjectName,
-    timeInput
+    timeInput,
+    timerSet
 }) => {
     return (
         <div>
@@ -45,6 +48,8 @@ const projectOptions = ({
                     dispatch(addSessionInfo(inputSessionInfo, optionProjectName));
                     newSessionInfo({inputSessionInfo});
                     dispatch(resetSessionInfo(''));
+                    dispatch(setInputTime(''));
+                    dispatch(timeSet(!timerSet));
                 }}
             >
                 <input
@@ -67,6 +72,7 @@ const projectOptions = ({
 const mapStateToProps = (state) => {
     return {
         timeInput: state.timerReducer.getIn(['timeInput']),
+        timerSet: state.timerReducer.getIn(['timerSet']),
         projects: state.projectReducers.getIn(['projects']),
         optionProjectName: state.sessionReducer.getIn(['optionProjectName']),
         inputSessionInfo: state.sessionReducer.getIn(['inputSessionInfo'])
