@@ -3,7 +3,8 @@ const { connect }       = require('react-redux');
 const {
     addSessionInfo,
     newSessionInfo,
-    selectProjectName
+    selectProjectName,
+    resetSessionInfo
 }                       = require('../../actions/action_creators');
 const projectOptions = ({
     projects,
@@ -42,7 +43,8 @@ const projectOptions = ({
                 onSubmit={(e) => {
                     e.preventDefault();
                     dispatch(addSessionInfo(inputSessionInfo, optionProjectName));
-                    newSessionInfo({inputSessionInfo})
+                    newSessionInfo({inputSessionInfo});
+                    dispatch(resetSessionInfo(''));
                 }}
             >
                 <input

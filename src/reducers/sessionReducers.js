@@ -2,6 +2,7 @@ const {
     ADD_SESSION,
     NEW_SESSION_INFO,
     OPTION_PROJECT_NAME,
+    RESET_SESSION_INFO,
 }                                   = require('../actions/ACTION_TYPES');
 const Immutable                     = require('immutable');
 
@@ -25,6 +26,10 @@ export const sessionReducer = (state=Immutable.fromJS({
                     }))
                 )
             })
+
+        case RESET_SESSION_INFO:
+            return state.set('inputSessionInfo', action.inputSessionInfo)
+
         default:
             return state
     }

@@ -2,7 +2,8 @@ const React             = require('react');
 const { connect }       = require('react-redux');
 const { 
     newSessionInfo,
-    addSessionInfo
+    addSessionInfo,
+    resetSessionInfo,
 }                       = require('../../actions/action_creators');
 const ProjectOptions    = require('./ProjectOptions').default;
 

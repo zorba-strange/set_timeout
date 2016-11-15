@@ -11,6 +11,7 @@ const {
     OPTION_PROJECT_NAME,
     SET_INPUT_TIME,
     RESET_INPUT_PROJECT_NAME,
+    RESET_SESSION_INFO,
 
 }                                 = require('./ACTION_TYPES');
 
@@ -25,6 +26,13 @@ export const resetInputProjectName = (projectName) => {
     return {
         type: RESET_INPUT_PROJECT_NAME,
         projectName
+    }
+}
+
+export const resetSessionInfo = (inputSessionInfo) => {
+    return {
+        type: RESET_SESSION_INFO,
+        inputSessionInfo
     }
 }
 
