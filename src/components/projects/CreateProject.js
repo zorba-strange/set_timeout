@@ -2,7 +2,8 @@ const React               = require('react');
 const { connect }         = require('react-redux');
 const {
     addProject,
-    inputProjectName
+    inputProjectName,
+    resetInputProjectName
 }                         = require('../../actions/action_creators');
 
 
@@ -16,6 +17,7 @@ const addNewProject = ({
             onSubmit={(e) => {
                 e.preventDefault();
                 dispatch(addProject(newProject));
+                dispatch(resetInputProjectName(''));
             }}
         >
             <input

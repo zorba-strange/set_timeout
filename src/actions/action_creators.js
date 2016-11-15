@@ -4,16 +4,26 @@ const {
     TIMER_SET,
     TIMER_RESET,
     COUNT_DOWN,
+    RESET_INPUT_TIME,
     ADD_SESSION,
     INPUT_PROJECT_NAME,
     NEW_SESSION_INFO,
-    OPTION_PROJECT_NAME
+    OPTION_PROJECT_NAME,
+    SET_INPUT_TIME,
+    RESET_INPUT_PROJECT_NAME,
 
 }                                 = require('./ACTION_TYPES');
 
 export const selectProjectName = (projectName) => {
     return {
         type: OPTION_PROJECT_NAME,
+        projectName
+    }
+}
+
+export const resetInputProjectName = (projectName) => {
+    return {
+        type: RESET_INPUT_PROJECT_NAME,
         projectName
     }
 }
@@ -55,6 +65,13 @@ export const setTime = (timeInput) => {
     }
 }
 
+export const resetTime = (timeInput) => {
+    return {
+        type: RESET_INPUT_TIME,
+        timeInput
+    }
+}
+
 export const timerReset = (timerSet) => {
     return {
         type: TIMER_RESET,
@@ -66,6 +83,14 @@ export const timeSet = (timerSet) => {
     return {
         type: TIMER_SET,
         timerSet
+    }
+}
+
+export const setInputTime = (timeInput) => {
+    console.log('action time', timeInput);
+    return {
+        type: SET_INPUT_TIME,
+        timeInput
     }
 }
 

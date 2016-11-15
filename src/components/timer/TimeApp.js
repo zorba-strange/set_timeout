@@ -5,7 +5,9 @@ const {
     setTime,
     timeSet,
     timerReset,
-    countDownAsync 
+    countDownAsync,
+    resetTime,
+    setInputTime,
 }                                  = require('../../actions/action_creators');
 
 
@@ -14,19 +16,20 @@ const AddSession                   = require('./AddSession').default;
 const timerApp = ({
     timerSet,
     dispatch,
-    timeInput
+    timeInput,
+    time
 }) => {
     if( !timerSet ){
         return (
             <form onSubmit={(e) => {
                 e.preventDefault();
                 dispatch(timeSet(!timerSet));
-                setTime({timeInput});
+                dispatch(setTime(timeInput));
             }}>
 
             <input 
                 type="text"
-                onChange={(e) =>  dispatch(setTime(e.target.value))}
+                onChange={(e) =>  dispatch(setInputTime(e.target.value))}
                 value={timeInput}
                 placeholder='0:00' />
             <input 
@@ -34,7 +37,7 @@ const timerApp = ({
                 value="Set Time" />
         </form>
         )
-    } else if ( parseInt(timeInput) === 0 ) {
+    } else if ( parseInt(time) === 0 ) {
         return (
             <div>
                 <AddSession />
@@ -42,6 +45,7 @@ const timerApp = ({
                     onClick={(e) => {
                         e.preventDefalut;
                         dispatch(timerReset(timerSet));
+                        dispatch(setInputTime(''));
                     }} 
                     type="submit"
                     value="Reset Timer"
@@ -51,7 +55,7 @@ const timerApp = ({
     } else {
         return (
             <div>
-                {timeInput}
+                {time}
                 <form 
                     onSubmit={(e) => { 
                         e.preventDefault();
@@ -70,6 +74,7 @@ const timerApp = ({
                         e.preventDefalut;
                         // this should be a timerResetSet to set the timeInput back to ''
                         dispatch(timeSet(!timerSet));
+                        dispatch(setInputTime(''));
                     }} 
                     type="submit"
                     value="Reset Timer"
@@ -84,7 +89,8 @@ const mapStateToProps = (state) => {
     console.log(state.timerReducer.getIn(['timeInput']))
     return {
         timeInput: state.timerReducer.getIn(['timeInput']),
-        timerSet: state.timerReducer.getIn(['timerSet'])
+        timerSet: state.timerReducer.getIn(['timerSet']),
+        time: state.timerReducer.getIn(['time'])
     }
 }
 

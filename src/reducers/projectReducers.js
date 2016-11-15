@@ -1,6 +1,7 @@
 const {
     ADD_PROJECT,
     INPUT_PROJECT_NAME,
+    RESET_INPUT_PROJECT_NAME
 }                                       = require('../actions/ACTION_TYPES');
 
 const Immutable                         = require('immutable');
@@ -23,6 +24,9 @@ export const projectReducers = (state=Immutable.fromJS({
                     }))
                 )
             })
+
+        case RESET_INPUT_PROJECT_NAME:
+            return state.set('newProject', action.projectName)
 
         default:
             return state

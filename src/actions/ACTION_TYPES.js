@@ -9,6 +9,9 @@ export const TIMER_SET                = 'TIMER_SET';
 export const TICK                     = 'TICK';
 export const TIMER_RESET              = 'TIMER_RESET';
 export const COUNT_DOWN               = 'COUNT_DOWN';
+export const RESET_INPUT_TIME         = 'RESET_INPUT_TIME';
+export const SET_INPUT_TIME           = 'SET_INPUT_TIME';
 
 export const ADD_SESSION              = 'ADD_SESSION';
 export const NEW_SESSION_INFO         = 'NEW_SESSION_INFO';
+export const RESET_INPUT_PROJECT_NAME = 'RESET_INPUT_PROJECT_NAME'

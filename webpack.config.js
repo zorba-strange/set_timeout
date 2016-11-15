@@ -29,6 +29,11 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
-    ]
+    ],
+    // devServer: {
+    //     historyApiFallback: true,
+    //     contentBase: './',
+    //     hot: true
+    // }
 };
 
