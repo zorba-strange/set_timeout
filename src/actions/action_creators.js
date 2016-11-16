@@ -102,10 +102,25 @@ export const setInputTime = (timeInput) => {
     }
 }
 
-export const countDownAsync = (time) => {
-    console.log('countDown', time)
+export const countDownTest = (time) => {
     return {
         type: COUNT_DOWN,
-        time
+        time: parseInt(time) - 1
     }
+}
+
+export const countDownAsync = (time) => {
+    return(dispatch, getState) => {
+        console.log('action called', time);
+            if( parseInt(time) === 0 ) {
+                return setTime(time);
+            } else {
+                return new Promise((then) =>
+                dispatch(countDownTest(time)).then(() => console.log('hello'))
+                )
+            }
+            return (
+                dispatch(countDownAsync(getState().timerReducer.getIn(['time'])))
+            )
+    } 
 }

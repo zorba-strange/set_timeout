@@ -59,10 +59,7 @@ const timerApp = ({
                 <form 
                     onSubmit={(e) => { 
                         e.preventDefault();
-                        while(parseInt(timeInput) != 0) {
-                            timeInput = parseInt(timeInput) - 1;
-                            dispatch(countDownAsync(timeInput))
-                        }
+                        dispatch(countDownAsync(timeInput))
                     }}>
                     <input 
                         type="submit"

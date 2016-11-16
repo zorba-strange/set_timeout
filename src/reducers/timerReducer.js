@@ -34,6 +34,7 @@ export const timerReducer = (state=Immutable.fromJS({
             return  state.set('timerSet', !action.timerSet)
 
         case COUNT_DOWN:
+            console.log('count down reducer called', action.time);
             return state.set('time', action.time)
 
         default:
