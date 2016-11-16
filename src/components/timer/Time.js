@@ -4,7 +4,7 @@ const { connect }            = require('react-redux');
 const { 
     countDown,
     Tick,
-    timeSet,
+    setTime,
 }                            = require('../../actions/action_creators');
 
 const TimeCount = ({
@@ -14,7 +14,8 @@ const TimeCount = ({
     timerSet
 }) => {
     if(parseInt(time) === 0){
-        dispatch(Tick(tick))
+        dispatch(Tick(tick));
+        dispatch(setTime(''));
         return(
             <div>
                 {time}
