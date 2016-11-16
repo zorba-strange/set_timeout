@@ -12,6 +12,7 @@ const {
 
 
 const AddSession                   = require('./AddSession').default;
+const Time                         = require('./Time').default;
 
 const timerApp = ({
     timerSet,
@@ -55,7 +56,7 @@ const timerApp = ({
     } else {
         return (
             <div>
-                {time}
+                <Time key={time} />
                 <form 
                     onSubmit={(e) => { 
                         e.preventDefault();
