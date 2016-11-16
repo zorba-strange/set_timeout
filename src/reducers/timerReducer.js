@@ -1,4 +1,5 @@
 const {
+    TICK,
     SET_TIME,
     TIMER_SET, 
     COUNT_DOWN,
@@ -14,7 +15,8 @@ const Immutable                         = require('immutable');
 export const timerReducer = (state=Immutable.fromJS({
     timerSet: false,
     timeInput: '',
-    time: ''
+    time: '',
+    tick: false
 }), action) => {
     switch(action.type){
 
@@ -34,8 +36,10 @@ export const timerReducer = (state=Immutable.fromJS({
             return  state.set('timerSet', !action.timerSet)
 
         case COUNT_DOWN:
-            console.log('count down reducer called', action.time);
             return state.set('time', action.time)
+
+        case TICK:
+            return state.set('tick', !action.tick)
 
         default:
             return state;

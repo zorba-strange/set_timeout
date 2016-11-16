@@ -8,6 +8,7 @@ const {
     countDownAsync,
     resetTime,
     setInputTime,
+    Tick,
 }                                  = require('../../actions/action_creators');
 
 
@@ -18,9 +19,11 @@ const timerApp = ({
     timerSet,
     dispatch,
     timeInput,
-    time
+    time,
+    tick
 }) => {
-    if( !timerSet ){
+    console.log(time)
+    if( parseInt(time) != 0 && !timerSet && !tick ){
         return (
             <form onSubmit={(e) => {
                 e.preventDefault();
@@ -38,29 +41,14 @@ const timerApp = ({
                 value="Set Time" />
         </form>
         )
-    } else if ( parseInt(time) === 0 ) {
+    }  else if( timerSet && !tick ){
         return (
             <div>
-                <AddSession />
-                <input 
-                    onClick={(e) => {
-                        e.preventDefalut;
-                        dispatch(timerReset(timerSet));
-                        dispatch(setInputTime(''));
-                    }} 
-                    type="submit"
-                    value="Reset Timer"
-                />
-            </div>
-        )
-    } else {
-        return (
-            <div>
-                <Time key={time} />
+            {time}
                 <form 
                     onSubmit={(e) => { 
                         e.preventDefault();
-                        dispatch(countDownAsync(timeInput))
+                        dispatch(Tick(tick))
                     }}>
                     <input 
                         type="submit"
@@ -79,16 +67,35 @@ const timerApp = ({
                 />
             </div>
         )
-    }
+    } else if( parseInt(time) != 0 && tick ){
+        return (
+            <Time key={time} />
+        )
+    } else {
+        return (
+            <div>
+                <AddSession />
+                <input 
+                    onClick={(e) => {
+                        e.preventDefalut;
+                        dispatch(timerReset(timerSet));
+                        dispatch(setInputTime(''));
+                    }} 
+                    type="submit"
+                    value="Reset Timer"
+                />
+            </div>
+        )
+    } 
 }
 
 
 const mapStateToProps = (state) => {
-    console.log(state.timerReducer.getIn(['timeInput']))
     return {
         timeInput: state.timerReducer.getIn(['timeInput']),
         timerSet: state.timerReducer.getIn(['timerSet']),
-        time: state.timerReducer.getIn(['time'])
+        time: state.timerReducer.getIn(['time']),
+        tick: state.timerReducer.getIn(['tick'])
     }
 }
 

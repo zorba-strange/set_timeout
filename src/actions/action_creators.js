@@ -1,4 +1,5 @@
 const { 
+    TICK,
     ADD_PROJECT,
     SET_TIME,
     TIMER_SET,
@@ -102,25 +103,16 @@ export const setInputTime = (timeInput) => {
     }
 }
 
-export const countDownTest = (time) => {
+export const countDown = (time) => {
     return {
         type: COUNT_DOWN,
         time: parseInt(time) - 1
     }
 }
 
-export const countDownAsync = (time) => {
-    return(dispatch, getState) => {
-        console.log('action called', time);
-            if( parseInt(time) === 0 ) {
-                return setTime(time);
-            } else {
-                return new Promise((then) =>
-                dispatch(countDownTest(time)).then(() => console.log('hello'))
-                )
-            }
-            return (
-                dispatch(countDownAsync(getState().timerReducer.getIn(['time'])))
-            )
-    } 
+export const Tick = (tick) => {
+    return {
+        type: TICK,
+        tick
+    }
 }
