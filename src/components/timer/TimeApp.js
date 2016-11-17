@@ -16,6 +16,8 @@ const AddSession                   = require('./AddSession').default;
 const Time                         = require('./Time').default;
 const SetTimeOnTimer               = require('./SetTime').default;
 const StartResetDisplayTime        = require('./StartResetDisplayTime').default;
+const ResetCancelTimer             = require('./ResetCancelTimer').default;
+
 
 const timerApp = ({
     timerSet,
@@ -24,35 +26,25 @@ const timerApp = ({
     time,
     tick
 }) => {
-    if( parseInt(time) != 0 && !timerSet && !tick ){
-        return (
-            <SetTimeOnTimer key={1001} />
-        )
-    }  else if( timerSet && !tick ){
-        return (
-            <StartResetDisplayTime key={2002} />
-        )
-    } else if( parseInt(time) != 0 && tick ){
-        return (
-            <Time key={time} />
-        )
-    } else {
-        return (
-            <div>
-                <AddSession />
-                <input 
-                    onClick={(e) => {
-                        e.preventDefalut;
-                        dispatch(timerReset(timerSet));
-                        dispatch(setInputTime(''));
-                    }} 
-                    type="submit"
-                    value="Reset Timer"
-                />
-            </div>
-        )
-    } 
+        if( !timerSet && !tick && parseInt(time) != 0 ){
+            return (
+                <SetTimeOnTimer key={1001} />
+            )
+        }  else if( timerSet && !tick ){
+            return (
+                <StartResetDisplayTime key={2002} />
+            )
+        } else if( parseInt(time) != 0 && tick ){
+            return (
+                <Time key={time} />
+            )
+        } else {
+            return(
+                <AddSession key={3003} />
+            )
+        }
 }
+
 
 
 const mapStateToProps = (state) => {

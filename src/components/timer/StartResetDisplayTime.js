@@ -10,6 +10,8 @@ const {
 }                                  = require('../../actions/action_creators');
 
 
+const ResetCancelTimer             = require('./ResetCancelTimer').default;
+
 const startResetDisplayTime = ({
     time, 
     tick, 
@@ -29,6 +31,7 @@ const startResetDisplayTime = ({
                     value="Start Timer"
                 />
             </form>
+            <ResetCancelTimer key={4004} />
             <input 
                 onClick={(e) => {
                     e.preventDefalut;
