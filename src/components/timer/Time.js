@@ -7,6 +7,8 @@ const {
     setTime,
 }                            = require('../../actions/action_creators');
 
+const ResetCancelTimer             = require('./ResetCancelTimer').default;
+
 const TimeCount = ({
     time,
     tick,
@@ -14,7 +16,7 @@ const TimeCount = ({
     timerSet
 }) => {
     if(parseInt(time) === 0){
-        dispatch(Tick(tick));
+        dispatch(Tick(!tick));
         dispatch(setTime(''));
         return(
             <div>
@@ -28,6 +30,7 @@ const TimeCount = ({
     return(
         <div>
             {time}
+            <ResetCancelTimer key={5005} />
         </div>
     )
 

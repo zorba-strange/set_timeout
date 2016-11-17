@@ -39,7 +39,7 @@ export const timerReducer = (state=Immutable.fromJS({
             return state.set('time', action.time)
 
         case TICK:
-            return state.set('tick', !action.tick)
+            return state.set('tick', action.tick)
 
         default:
             return state;

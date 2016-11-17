@@ -24,7 +24,7 @@ const startResetDisplayTime = ({
             <form 
                 onSubmit={(e) => { 
                     e.preventDefault();
-                    dispatch(Tick(tick))
+                    dispatch(Tick(true))
                 }}>
                 <input 
                     type="submit"
@@ -32,16 +32,6 @@ const startResetDisplayTime = ({
                 />
             </form>
             <ResetCancelTimer key={4004} />
-            <input 
-                onClick={(e) => {
-                    e.preventDefalut;
-                    // this should be a timerResetSet to set the timeInput back to ''
-                    dispatch(timeSet(!timerSet));
-                    dispatch(setInputTime(''));
-                }} 
-                type="submit"
-                value="Reset Timer"
-            />
         </div>
     )
 }

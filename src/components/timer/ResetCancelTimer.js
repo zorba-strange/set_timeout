@@ -3,7 +3,6 @@ const { connect }         = require('react-redux');
 
 const {
     timeSet,
-    timerReset,
     resetTime,
     setInputTime,
     Tick,
@@ -18,9 +17,6 @@ const resetCancelTimer = ({dispatch}) => {
                     e.preventDefalut;
                     // reset input time
                     dispatch(setInputTime(''));
-                    // reset time
-                    dispatch(setTime(''));
-                    // reset if the timer has been set
                     dispatch(timeSet(false));
                     // reset tick to false
                     dispatch(Tick(false));
