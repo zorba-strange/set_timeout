@@ -5,8 +5,10 @@ const {
     newSessionInfo,
     selectProjectName,
     resetSessionInfo,
+    Tick,
     setInputTime,
     timeSet,
+    setTime,
 }                       = require('../../actions/action_creators');
 const projectOptions = ({
     projects,
@@ -49,7 +51,9 @@ const projectOptions = ({
                     newSessionInfo({inputSessionInfo});
                     dispatch(resetSessionInfo(''));
                     dispatch(setInputTime(''));
-                    dispatch(timeSet(!timerSet));
+                    dispatch(timeSet(false));
+                    dispatch(Tick(false));
+                    dispatch(setTime(''));
                 }}
             >
                 <input
