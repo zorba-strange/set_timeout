@@ -14,6 +14,8 @@ const {
 
 const AddSession                   = require('./AddSession').default;
 const Time                         = require('./Time').default;
+const SetTimeOnTimer               = require('./SetTime').default;
+const StartResetDisplayTime        = require('./StartResetDisplayTime').default;
 
 const timerApp = ({
     timerSet,
@@ -22,50 +24,13 @@ const timerApp = ({
     time,
     tick
 }) => {
-    console.log(time)
     if( parseInt(time) != 0 && !timerSet && !tick ){
         return (
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                dispatch(timeSet(!timerSet));
-                dispatch(setTime(timeInput));
-            }}>
-
-            <input 
-                type="text"
-                onChange={(e) =>  dispatch(setInputTime(e.target.value))}
-                value={timeInput}
-                placeholder='0:00' />
-            <input 
-                type="submit"
-                value="Set Time" />
-        </form>
+            <SetTimeOnTimer key={1001} />
         )
     }  else if( timerSet && !tick ){
         return (
-            <div>
-            {time}
-                <form 
-                    onSubmit={(e) => { 
-                        e.preventDefault();
-                        dispatch(Tick(tick))
-                    }}>
-                    <input 
-                        type="submit"
-                        value="Start Timer"
-                    />
-                </form>
-                <input 
-                    onClick={(e) => {
-                        e.preventDefalut;
-                        // this should be a timerResetSet to set the timeInput back to ''
-                        dispatch(timeSet(!timerSet));
-                        dispatch(setInputTime(''));
-                    }} 
-                    type="submit"
-                    value="Reset Timer"
-                />
-            </div>
+            <StartResetDisplayTime key={2002} />
         )
     } else if( parseInt(time) != 0 && tick ){
         return (
